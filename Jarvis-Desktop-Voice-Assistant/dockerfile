@@ -1,0 +1,17 @@
+#OS with Env (base image)
+FROM python:latest 
+
+#Working dir
+WORkDIR /app
+
+#Code
+COPY . .
+
+#Libraroes
+RUN pip install --upgrade pip
+RUN python -m venv .venv
+RUN pip install -r requirements.txt
+RUN if [ "$(uname -s)" = "Windows_NT" ]; then .venv/Scripts/pip install pywin32; fi
+
+#run
+CMD ["python", "Jarvis/jarvis.py"]

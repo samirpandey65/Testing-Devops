@@ -1,21 +1,13 @@
-#OS with Env (base image)
+##OS
 FROM openjdk:17-jdk-alpine
+##DIR
+WORKDIR /app
 
-
-
-#Working dir
-WORkDIR /app
-
-
-#Code
+##COPY
 COPY src/Main.java /app/Main.java
 
-
-#Libraroes
+##LIB
 RUN javac Main.java
 
-
-#run
+###RUN
 CMD ["java", "Main"]
-
-
